@@ -7,16 +7,16 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Mozilla Network">
     <meta property="og:locale" content="en_US">
-    <meta property="og:url" content="https://network.mofostaging.net/opportunity/template">
+    <meta property="og:url" content="https://network.mofostaging.netnetwork-api/app/networkapi/templates/pages/landingpage.html">
     <meta property="og:title" content="Mozilla Network – {{ page.meta_title }}">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-iN7wpJdxHlpujRppkOA8N0+Mzp0ZqZr3lCtxM00Y63c=' https://www.google-analytics.com/analytics.js network.mozilla.org; style-src 'self' code.cdn.mozilla.net fonts.googleapis.com network.mozilla.org; img-src * data:; font-src 'self' fonts.gstatic.com fonts.googleapis.com code.cdn.mozilla.net; connect-src 'self' ws: *.mozilla.org; media-src 'self'; object-src 'self'; frame-src 'self';">
-    <link rel="stylesheet" href="https://{% settings_value "ASSET_DOMAIN" %}/_css/main.compiled.css">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-iN7wpJdxHlpujRppkOA8N0+Mzp0ZqZr3lCtxM00Y63c=' cdn.optimizely.com https://www.google-analytics.com/analytics.js; style-src 'self' code.cdn.mozilla.net fonts.googleapis.com; img-src * data:; font-src 'self' fonts.gstatic.com fonts.googleapis.com code.cdn.mozilla.net; connect-src 'self' ws: *.mozilla.org; media-src 'self'; object-src 'self'; child-src 'self';">
+    <link rel="stylesheet" href="/_css/main.compiled.css">
     <link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Nunito+Sans:400,600,300i">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Arvo">
-    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="https://{% settings_value "ASSET_DOMAIN" %}/_images/favicons/apple-touch-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="196x196" href="https://{% settings_value "ASSET_DOMAIN" %}/_images/favicons/favicon-196x196.png">
-    <link rel="shortcut icon" href="https://{% settings_value "ASSET_DOMAIN" %}/_images/favicons/favicon.ico">
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/_images/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="196x196" href="/_images/favicons/favicon-196x196.png">
+    <link rel="shortcut icon" href="/_images/favicons/favicon.ico">
     <title>Mozilla Network – {{ page.meta_title }}</title>
   </head>
   <body id="view-opportunity">
@@ -52,6 +52,14 @@
           <div class="container">
           </div>
         </div>
+      </div>{% load pages_tags %}
+      <div class="container">
+        <ul>
+          {% for page in page_branch %}
+          {% if page.in_menu %}
+          <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a>{% page_menu page %}</li>{% endif %}
+          {% endfor %}
+        </ul>
       </div>
       <div class="container">
         <div class="row py-5 justify-content-center">{% if page.landingpage.signup %}
@@ -92,4 +100,4 @@
     </div>
   </body>
 </html>
-<script src="https://{% settings_value "ASSET_DOMAIN" %}/_js/main.compiled.js"></script>
+<script src="/_js/main.compiled.js"></script>

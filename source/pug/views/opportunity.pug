@@ -15,6 +15,16 @@ block centerNav
   p {{ page.meta_title }}
 
 block content
+  | {% load pages_tags %}
+  .container
+    ul
+      | {% for page in page_branch %}
+      | {% if page.in_menu %}
+      li
+        a(href=`{{ page.get_absolute_url }}`) {{ page.title }}
+        | {% page_menu page %}
+      | {% endif %}
+      | {% endfor %}
   .container
     .row.py-5.justify-content-center
       | {% if page.landingpage.signup %}
