@@ -52,14 +52,10 @@
           <div class="container">
           </div>
         </div>
-      </div>{% load pages_tags %}
+      </div>
       <div class="container">
-        <ul>
-          {% for page in page_branch %}
-          {% if page.in_menu %}
-          <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a>{% page_menu page %}</li>{% endif %}
-          {% endfor %}
-        </ul>
+        {% load pages_tags %}
+        {% page_menu "pages/menus/side-menu.html" %}
       </div>
       <div class="container">
         <div class="row py-5 justify-content-center">{% if page.landingpage.signup %}
